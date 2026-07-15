@@ -7,15 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/CYC1ONE3/itelect2-project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/CYC1ONE3/itelect2-project/issues"
   },
   "homepage": "https://github.com/CYC1ONE3/itelect2-project#readme"
 }
+
