@@ -24,3 +24,25 @@ export const createTask = (taskData) => {
   return { id: Date.now(), completed: false, ...taskData
   };
 };
+
+
+export const mockTasks = [
+  {
+    id: 1,
+    title: "Submit GT3",
+    dueDate: "2026-07-22",
+    completed: true
+  },
+  {
+    id: 2,
+    title: "Submit GT4",
+    dueDate: "2026-07-29",
+    completed: false
+  },
+  {
+    id: 3,
+    title: "Submit GT5",
+    dueDate: "2026-08-05",
+    completed: false
+  }
+];
