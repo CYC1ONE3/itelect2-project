@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notEmpty: {
-            msg: "title is needed",
+          notEmpty: { 
+            msg: "title is needed", //text is changed
           },
         },
       },
