@@ -13,7 +13,7 @@ router.get("/tasks", (req, res) => {
 });
 */
 
-
+/*
 router.get("/tasks", async (req, res) => {
   const tasks = await Task.findAll({
     include: User,
@@ -21,7 +21,20 @@ router.get("/tasks", async (req, res) => {
 
   res.json(tasks);
 });
+*/
 
+router.get("/tasks", async (req, res) => {
+  const tasks = await Task.findAll({
+    include: {
+      model: User,
+      attributes: {
+        exclude: ["password"],
+      },
+    },
+  });
+
+  res.json(tasks);
+});
 /*
 
 
@@ -42,7 +55,7 @@ router.get("/tasks/:id", (req, res) => {
 });
 */
 
-
+/*
 router.get("/tasks/:id", async (req, res) => {
   const task = await Task.findByPk(req.params.id, {
     include: User,
@@ -56,7 +69,26 @@ router.get("/tasks/:id", async (req, res) => {
 
   res.json(task);
 });
+*/
 
+router.get("/tasks/:id", async (req, res) => {
+  const task = await Task.findByPk(req.params.id, {
+    include: {
+      model: User,
+      attributes: {
+        exclude: ["password"],
+      },
+    },
+  });
+
+  if (!task) {
+    return res.status(404).json({
+      error: "Task not found",
+    });
+  }
+
+  res.json(task);
+});
 /*
 
 
