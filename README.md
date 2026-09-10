@@ -68,3 +68,47 @@ My IT Elective 2 backend web development project.
 ![Users Table](screenshots/USERS_TABLE.png)
 
 ![Tasks Table](screenshots/TASKS_TABLE.png)
+
+
+
+## GT9 - Password Hashing and JWT Login
+
+### Successful Registration — 201
+
+![Successful registration](screenshots/GT9_REGISTER_201.png)
+
+### Duplicate Email — 409
+
+![Duplicate email](screenshots/GT9_REGISTER_409.png)
+
+### Short Password — 400
+
+![Short password](screenshots/GT9_REGISTER_SHORT_400.png)
+
+### Invalid Email — 400
+
+![Invalid email](screenshots/GT9_REGISTER_EMAIL_400.png)
+
+### Registration Ignores Admin Role
+
+![Submitted admin role defaults to member](screenshots/GT9_REGISTER_ROLE_MEMBER.png)
+
+### Successful Login — 200
+
+![Successful login with JWT](screenshots/GT9_LOGIN_200.png)
+
+### Wrong Password — 401
+
+![Wrong password](screenshots/GT9_LOGIN_WRONG_401.png)
+
+### Unknown Email — 401
+
+![Unknown email](screenshots/GT9_LOGIN_UNKNOWN_401.png)
+
+### Hashed Passwords and User Roles
+
+![Hashed passwords and admin and member roles](screenshots/GT9_USERS_HASHED.png)
+
+### Tasks with Users Without Password Fields
+
+![Task JOIN response without password fields](screenshots/GT9_TASKS_NO_PASSWORD.png)
