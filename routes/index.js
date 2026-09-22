@@ -1,3 +1,5 @@
+import verifyToken from "../middleware/verifyToken.js";
+import requireRole from "../middleware/requireRole.js";
 import express from "express";
 import db from "../models/index.cjs";
 import { mockTasks, validateTask, mergeTaskUpdate } from "../src/utils.js";
@@ -132,7 +134,8 @@ router.post("/tasks", (req, res, next) => {
 */
 
 
-router.post("/tasks", async (req, res) => {
+//router.post("/tasks", async (req, res) => {
+router.post("/tasks", verifyToken, async (req, res) => {
   const task = await Task.create(req.body);
 
   res.status(201).json(task);
@@ -165,7 +168,8 @@ router.put("/tasks/:id", (req, res, next) => {
 */
 
 // NEW GT8: UPDATE TASK IN POSTGRESQL
-router.put("/tasks/:id", async (req, res) => {
+//router.put("/tasks/:id", async (req, res) => {
+router.put("/tasks/:id", verifyToken, async (req, res) => {
   const task = await Task.findByPk(req.params.id);
 
   if (!task) {
@@ -206,7 +210,7 @@ router.delete("/tasks/:id", (req, res, next) => {
 */
 
 // NEW GT8: DELETE TASK FROM POSTGRESQL
-router.delete("/tasks/:id", async (req, res) => {
+/*router.delete("/tasks/:id", async (req, res) => {
   const task = await Task.findByPk(req.params.id);
 
   if (!task) {
@@ -222,5 +226,25 @@ router.delete("/tasks/:id", async (req, res) => {
     task,
   });
 });
+*/
 
+// DELETE /api/tasks/:id -- admin only
+router.delete("/tasks/:id", verifyToken, requireRole("admin"), async (req, res) => {
+    const task = await Task.findByPk(req.params.id);
+
+    if (!task) {
+      return res.status(404).json({
+        error: "Task not found",
+      });
+    }
+
+    await task.destroy();
+
+    res.json({
+      message: "Deleted",
+      task,
+      deletedBy: req.user.email,
+    });
+  }
+);
 export default router;
