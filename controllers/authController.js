@@ -1,30 +1,12 @@
-import express from "express";
-import {
-  register,
-  login,
-} from "../controllers/authController.js";
-
-const router = express.Router();
-
-router.post("/register", register);
-router.post("/login", login);
-
-export default router;
-
-
-/*
-import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import db from "../models/index.cjs";
 
 const { User } = db;
-const router = express.Router();
 
 const SALT_ROUNDS = 10;
 
-// POST /api/auth/register
-router.post("/register", async (req, res) => {
+export async function register(req, res) {
   const { email, password } = req.body;
 
   if (!password || password.length < 8) {
@@ -45,17 +27,16 @@ router.post("/register", async (req, res) => {
 
   const hash = await bcrypt.hash(password, SALT_ROUNDS);
 
-  // Do not accept role from the request body.
+
   const user = await User.create({
     email,
     password: hash,
   });
 
   res.status(201).json(user);
-});
+}
 
-// POST /api/auth/login
-router.post("/login", async (req, res) => {
+export async function login(req, res) {
   const { email, password } = req.body;
 
   const user = await User.findOne({
@@ -89,7 +70,11 @@ router.post("/login", async (req, res) => {
   );
 
   res.json({ token });
-});
+}
 
-export default router;
-*/
+
+export async function listUsers(req, res) {
+  const users = await User.findAll();
+
+  res.json(users);
+}
