@@ -17,6 +17,12 @@
   "bugs": {
     "url": "https://github.com/CYC1ONE3/itelect2-project/issues"
   },
+    "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --env-file=.env server.js"
+  },
+
   "homepage": "https://github.com/CYC1ONE3/itelect2-project#readme",
   "dependencies": {
     "bcryptjs": "^3.0.3",
