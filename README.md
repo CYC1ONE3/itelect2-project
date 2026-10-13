@@ -112,3 +112,23 @@ My IT Elective 2 backend web development project.
 ### Tasks with Users Without Password Fields
 
 ![Task JOIN response without password fields](screenshots/GT9_TASKS_NO_PASSWORD.png)
+
+
+## GT10 - Role-Based Authorization
+
+### Request Without a Token — 401
+
+![No Token](screenshots/GT10_NO_TOKEN_401.png)
+
+### Member Attempts to Delete — 403
+
+![Member Forbidden](screenshots/GT10_MEMBER_DELETE_403.png)
+
+### Admin Deletes a Task — 200
+
+![Admin Delete Success](screenshots/GT10_ADMIN_DELETE_200.png)
+
+## GT12 - Deploy to Render
+
+### Live URL
+https://itelect2-project-6d92.onrender.com
