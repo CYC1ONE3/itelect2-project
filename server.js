@@ -32,10 +32,17 @@ app.use("/api/users", userRouter);
 app.use(errorHandler);
 
 async function startServer() {
-  const cachedUsers = await fetchSampleUsers();
+ /* const cachedUsers = await fetchSampleUsers();
 
   app.locals.cachedUsers = cachedUsers;
-
+*/
+  try {
+    app.locals.cachedUsers = await fetchSampleUsers();
+  } catch (err) {
+    console.error("Could not fetch sample users:", err.message);
+    app.locals.cachedUsers = [];
+  }
+  
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
